@@ -1,9 +1,4 @@
-const AIRTABLE_TOKEN = process.env.NEXT_PUBLIC_AIRTABLE_TOKEN;
-const AIRTABLE_BASE_ID = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID;
 const AIRTABLE_API = 'https://api.airtable.com/v0';
-
-if (!AIRTABLE_TOKEN) throw new Error('NEXT_PUBLIC_AIRTABLE_TOKEN is not set');
-if (!AIRTABLE_BASE_ID) throw new Error('NEXT_PUBLIC_AIRTABLE_BASE_ID is not set');
 
 export class AirtableError extends Error {
   constructor(public status: number, message: string) {
@@ -16,14 +11,19 @@ async function postToAirtable(
   tableName: 'Leads Familias' | 'Leads Cuidadoras',
   fields: Record<string, string>
 ): Promise<void> {
+  const token = process.env.NEXT_PUBLIC_AIRTABLE_TOKEN;
+  const baseId = process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID;
+  if (!token) throw new AirtableError(0, 'NEXT_PUBLIC_AIRTABLE_TOKEN is not set');
+  if (!baseId) throw new AirtableError(0, 'NEXT_PUBLIC_AIRTABLE_BASE_ID is not set');
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15_000);
   try {
-    const url = `${AIRTABLE_API}/${AIRTABLE_BASE_ID}/${encodeURIComponent(tableName)}`;
+    const url = `${AIRTABLE_API}/${baseId}/${encodeURIComponent(tableName)}`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${AIRTABLE_TOKEN}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ fields }),
