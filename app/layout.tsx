@@ -6,7 +6,7 @@ import { MetaPixelProvider } from "@/components/shared/MetaPixelProvider";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PROYECTO — Cuidado infantil verificado en Lima",
+  title: "NanaGo — Cuidado infantil verificado en Lima",
   description:
     "Conectamos familias con cuidadoras verificadas y capacitadas en Miraflores, San Isidro y Surco.",
 };

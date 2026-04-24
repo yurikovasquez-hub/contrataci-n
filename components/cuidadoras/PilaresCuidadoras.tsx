@@ -24,7 +24,7 @@ export function PilaresCuidadoras() {
     <section className="bg-white px-6 py-16">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-12 text-center text-2xl font-bold text-gray-900">
-          ¿Por qué cuidadoras eligen PROYECTO?
+          ¿Por qué cuidadoras eligen NanaGo?
         </h2>
         <div className="grid gap-8 sm:grid-cols-3">
           {PILARES.map((p) => (

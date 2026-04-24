@@ -8,7 +8,7 @@ import { CTAFinalFamilias } from "@/components/familias/CTAFinalFamilias";
 import Link from "next/link";
 
 export const metadata = {
-  title: "PROYECTO para Familias — Cuidadoras verificadas en 48h",
+  title: "NanaGo para Familias — Cuidadoras verificadas en 48h",
   description:
     "Encuentra cuidadoras con antecedentes verificados y certificación técnica en Miraflores, San Isidro y Surco.",
 };

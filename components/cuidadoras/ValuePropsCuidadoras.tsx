@@ -22,7 +22,7 @@ export function ValuePropsCuidadoras() {
   return (
     <section className="mx-auto max-w-lg px-6 py-12">
       <h2 className="mb-8 text-center text-lg font-semibold text-gray-700">
-        ¿Por qué PROYECTO para cuidadoras?
+        ¿Por qué NanaGo para cuidadoras?
       </h2>
       <div className="flex flex-col gap-6">
         {PROPS.map(p => (

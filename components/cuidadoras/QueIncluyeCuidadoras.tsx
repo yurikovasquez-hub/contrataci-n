@@ -36,7 +36,7 @@ export function QueIncluyeCuidadoras() {
     <section className="bg-gray-50 px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-10 text-center text-2xl font-bold text-gray-900">
-          ¿Qué incluye tu perfil en PROYECTO?
+          ¿Qué incluye tu perfil en NanaGo?
         </h2>
         <div className="grid gap-5 sm:grid-cols-2">
           {ITEMS.map((item) => (

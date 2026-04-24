@@ -12,10 +12,10 @@ export function CuandoRegistrarseCuidadoras() {
     <section className="bg-emerald-50 px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-2 text-center text-2xl font-bold text-gray-900">
-          ¿Cuándo registrarte en PROYECTO?
+          ¿Cuándo registrarte en NanaGo?
         </h2>
         <p className="mb-10 text-center text-gray-500">
-          Si te identificas con alguna de estas situaciones, PROYECTO es para ti.
+          Si te identificas con alguna de estas situaciones, NanaGo es para ti.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {CASOS.map((c) => (

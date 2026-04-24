@@ -33,7 +33,7 @@ export function TestimoniosFamilias() {
           Lo que dicen las familias
         </p>
         <h2 className="mb-10 text-center text-2xl font-bold text-gray-900">
-          Madres de Lima moderna ya confían en PROYECTO
+          Madres de Lima moderna ya confían en NanaGo
         </h2>
         <div className="grid gap-6 sm:grid-cols-2">
           {TESTIMONIOS.map((t) => (

@@ -12,7 +12,7 @@ export function CuandoUsarFamilias() {
     <section className="bg-indigo-50 px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-2 text-center text-2xl font-bold text-gray-900">
-          ¿Cuándo contactar a PROYECTO?
+          ¿Cuándo contactar a NanaGo?
         </h2>
         <p className="mb-10 text-center text-gray-500">
           Nuestra red cubre todas las situaciones en las que tu hijo necesita un cuidado confiable.

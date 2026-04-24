@@ -1,6 +1,6 @@
 export function CTAFinalCuidadoras() {
   const waUrl =
-    'https://wa.me/51933208395?text=Hola%2C%20quiero%20registrarme%20como%20cuidadora%20en%20PROYECTO';
+    'https://wa.me/51933208395?text=Hola%2C%20quiero%20registrarme%20como%20cuidadora%20en%20NanaGo';
 
   return (
     <section className="bg-emerald-700 px-6 py-16 text-center text-white">

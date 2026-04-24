@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 text-center">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">PROYECTO</h1>
+        <h1 className="text-3xl font-bold text-gray-900">NanaGo</h1>
         <p className="mt-2 text-gray-500">Cuidado infantil verificado en Lima</p>
       </div>
       <div className="flex flex-col gap-4 sm:flex-row">

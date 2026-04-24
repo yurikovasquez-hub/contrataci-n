@@ -3,7 +3,7 @@ const TESTIMONIOS = [
     nombre: 'Rosa H.',
     distrito: 'Surco',
     texto:
-      'Antes conseguía trabajo solo por recomendaciones. Con PROYECTO mi certificación habla por mí y las familias llegan a mí, no al revés.',
+      'Antes conseguía trabajo solo por recomendaciones. Con NanaGo mi certificación habla por mí y las familias llegan a mí, no al revés.',
   },
   {
     nombre: 'Milagros C.',
@@ -33,7 +33,7 @@ export function TestimoniosCuidadoras() {
           Lo que dicen las cuidadoras
         </p>
         <h2 className="mb-10 text-center text-2xl font-bold text-gray-900">
-          Técnicas de Lima moderna ya usan PROYECTO
+          Técnicas de Lima moderna ya usan NanaGo
         </h2>
         <div className="grid gap-6 sm:grid-cols-2">
           {TESTIMONIOS.map((t) => (
