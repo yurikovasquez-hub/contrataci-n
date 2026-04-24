@@ -7,7 +7,7 @@ export function HeroFamilias() {
   return (
     <header>
       {/* Top bar */}
-      <div className="bg-indigo-900 px-6 py-2 text-center text-xs text-indigo-200">
+      <div className="bg-purple-900 px-6 py-2 text-center text-xs text-purple-200">
         📍 Miraflores · San Isidro · Surco &nbsp;|&nbsp;
         <a href={waUrl} className="underline hover:text-white">
           WhatsApp: +51 933 208 395
@@ -15,7 +15,7 @@ export function HeroFamilias() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-600 to-indigo-800 px-6 py-20 text-center text-white">
+      <section className="bg-gradient-to-br from-purple-100 to-violet-200 px-6 py-20 text-center">
         <div className="mx-auto max-w-2xl">
           <Image
             src="/logo-nanago.png"
@@ -25,14 +25,14 @@ export function HeroFamilias() {
             className="mx-auto mb-4"
             priority
           />
-          <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1 text-sm font-medium">
+          <span className="mb-4 inline-block rounded-full bg-purple-200/70 px-4 py-1 text-sm font-medium text-purple-800">
             Cuidado infantil verificado en Lima
           </span>
-          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-purple-900 sm:text-5xl">
             Cuidadoras verificadas para tu bebé —{' '}
-            <span className="text-indigo-200">en 48 horas, no en semanas.</span>
+            <span className="text-violet-600">en 48 horas, no en semanas.</span>
           </h1>
-          <p className="mt-6 text-lg text-indigo-100">
+          <p className="mt-6 text-lg text-purple-800">
             Deja de buscar por WhatsApp. Recibe perfiles con antecedentes penales
             verificados, certificación técnica y reseñas reales de madres en tu zona.
           </p>
@@ -45,7 +45,7 @@ export function HeroFamilias() {
             </a>
             <a
               href="#formulario"
-              className="rounded-xl border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white transition hover:bg-white/20"
+              className="rounded-xl border border-purple-400 bg-white/60 px-8 py-4 font-semibold text-purple-900 transition hover:bg-white/80"
             >
               Reserva acceso anticipado
             </a>
