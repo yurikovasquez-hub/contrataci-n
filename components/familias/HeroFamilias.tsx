@@ -25,14 +25,14 @@ export function HeroFamilias() {
             className="mx-auto mb-4"
             priority
           />
-          <span className="mb-4 inline-block rounded-full bg-purple-200/70 px-4 py-1 text-sm font-medium text-purple-800">
+          <span className="mb-4 inline-block rounded-full bg-purple-200/70 px-4 py-1 text-sm font-medium text-gray-900">
             Cuidado infantil verificado en Lima
           </span>
-          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-purple-900 sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl">
             Cuidadoras verificadas para tu bebé —{' '}
             <span className="text-violet-600">en 48 horas, no en semanas.</span>
           </h1>
-          <p className="mt-6 text-lg text-purple-800">
+          <p className="mt-6 text-lg text-gray-800">
             Deja de buscar por WhatsApp. Recibe perfiles con antecedentes penales
             verificados, certificación técnica y reseñas reales de madres en tu zona.
           </p>
@@ -45,7 +45,7 @@ export function HeroFamilias() {
             </a>
             <a
               href="#formulario"
-              className="rounded-xl border border-purple-400 bg-white/60 px-8 py-4 font-semibold text-purple-900 transition hover:bg-white/80"
+              className="rounded-xl border border-purple-400 bg-white/60 px-8 py-4 font-semibold text-gray-900 transition hover:bg-white/80"
             >
               Reserva acceso anticipado
             </a>
