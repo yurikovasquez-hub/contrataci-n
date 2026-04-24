@@ -1,10 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 text-center">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">NanaGo</h1>
+        <Image
+          src="/logo-nanago.png"
+          alt="NanaGo"
+          width={180}
+          height={180}
+          className="mx-auto"
+          priority
+        />
         <p className="mt-2 text-gray-500">Cuidado infantil verificado en Lima</p>
       </div>
       <div className="flex flex-col gap-4 sm:flex-row">

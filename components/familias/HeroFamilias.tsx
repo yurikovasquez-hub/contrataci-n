@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function HeroFamilias() {
   const waUrl =
     'https://wa.me/51933208395?text=Hola%2C%20quiero%20encontrar%20una%20cuidadora%20verificada%20para%20mi%20hijo';
@@ -15,6 +17,14 @@ export function HeroFamilias() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-indigo-600 to-indigo-800 px-6 py-20 text-center text-white">
         <div className="mx-auto max-w-2xl">
+          <Image
+            src="/logo-nanago.png"
+            alt="NanaGo"
+            width={120}
+            height={120}
+            className="mx-auto mb-4"
+            priority
+          />
           <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1 text-sm font-medium">
             Cuidado infantil verificado en Lima
           </span>
