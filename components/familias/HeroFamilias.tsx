@@ -1,5 +1,11 @@
 import Image from 'next/image';
-import { HeroSlideshow } from './HeroSlideshow';
+import { HeroSlideshow } from '@/components/shared/HeroSlideshow';
+
+const SLIDES = [
+  { url: 'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1600&q=80', alt: 'Familia feliz con bebé en casa' },
+  { url: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1600&q=80', alt: 'Nana cuidando a un niño pequeño' },
+  { url: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1600&q=80', alt: 'Niño caminando en el parque' },
+];
 
 export function HeroFamilias() {
   const waUrl =
@@ -7,24 +13,13 @@ export function HeroFamilias() {
 
   return (
     <header>
-      {/* Top bar */}
       <div className="bg-purple-900 px-6 py-2 text-center text-xs text-purple-200">
         📍 Miraflores · San Isidro · Surco &nbsp;|&nbsp;
-        <a href={waUrl} className="underline hover:text-white">
-          WhatsApp: +51 933 208 395
-        </a>
+        <a href={waUrl} className="underline hover:text-white">WhatsApp: +51 933 208 395</a>
       </div>
-
-      <HeroSlideshow>
+      <HeroSlideshow slides={SLIDES}>
         <div className="mx-auto max-w-2xl">
-          <Image
-            src="/logo-nanago.png"
-            alt="NanaGo"
-            width={120}
-            height={120}
-            className="mx-auto mb-4"
-            priority
-          />
+          <Image src="/logo-nanago.png" alt="NanaGo" width={120} height={120} className="mx-auto mb-4" priority />
           <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1 text-sm font-medium text-white">
             Cuidado infantil verificado en Lima
           </span>
@@ -37,16 +32,10 @@ export function HeroFamilias() {
             verificados, certificación técnica y reseñas reales de madres en tu zona.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              href={waUrl}
-              className="rounded-xl bg-green-500 px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-green-600"
-            >
+            <a href={waUrl} className="rounded-xl bg-green-500 px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-green-600">
               💬 Agenda por WhatsApp
             </a>
-            <a
-              href="#formulario"
-              className="rounded-xl border border-white/40 bg-white/20 px-8 py-4 font-semibold text-white transition hover:bg-white/30"
-            >
+            <a href="#formulario" className="rounded-xl border border-white/40 bg-white/20 px-8 py-4 font-semibold text-white transition hover:bg-white/30">
               Reserva acceso anticipado
             </a>
           </div>
