@@ -8,8 +8,11 @@ export class AirtableError extends Error {
 }
 
 function toAirtableError(err: unknown): never {
-  const msg = err instanceof Error ? err.message : String(err);
-  console.error('[Supabase error]', msg);
+  let msg = 'unknown';
+  if (err instanceof Error) msg = err.message;
+  else if (err && typeof err === 'object' && 'message' in err) msg = String((err as { message: unknown }).message);
+  else msg = String(err);
+  console.error('[Supabase error]', err);
   throw new AirtableError(0, msg);
 }
 
