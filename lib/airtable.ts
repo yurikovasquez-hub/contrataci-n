@@ -7,21 +7,29 @@ export class AirtableError extends Error {
   }
 }
 
+function toAirtableError(err: unknown): never {
+  const msg = err instanceof Error ? err.message : String(err);
+  console.error('[Supabase error]', msg);
+  throw new AirtableError(0, msg);
+}
+
 export async function submitFamiliaLead(data: {
   nombre: string;
   email: string;
   whatsapp: string;
   urgencia: string;
 }): Promise<void> {
-  const { error } = await getSupabase().from('leads_familias').insert({
-    nombre:   data.nombre,
-    email:    data.email,
-    whatsapp: data.whatsapp,
-    urgencia: data.urgencia,
-  });
-  if (error) {
-    console.error('[Supabase] leads_familias insert error:', error);
-    throw new AirtableError(0, error.message);
+  try {
+    const { error } = await getSupabase().from('leads_familias').insert({
+      nombre:   data.nombre,
+      email:    data.email,
+      whatsapp: data.whatsapp,
+      urgencia: data.urgencia,
+    });
+    if (error) toAirtableError(error);
+  } catch (err) {
+    if (err instanceof AirtableError) throw err;
+    toAirtableError(err);
   }
 }
 
@@ -32,29 +40,33 @@ export async function submitCuidadoraLead(data: {
   plan: string;
   certificacion?: string;
 }): Promise<void> {
-  const { error } = await getSupabase().from('leads_cuidadoras').insert({
-    nombre:        data.nombre,
-    email:         data.email,
-    whatsapp:      data.whatsapp,
-    plan:          data.plan,
-    certificacion: data.certificacion?.trim() || null,
-  });
-  if (error) {
-    console.error('[Supabase] leads_cuidadoras insert error:', error);
-    throw new AirtableError(0, error.message);
+  try {
+    const { error } = await getSupabase().from('leads_cuidadoras').insert({
+      nombre:        data.nombre,
+      email:         data.email,
+      whatsapp:      data.whatsapp,
+      plan:          data.plan,
+      certificacion: data.certificacion?.trim() || null,
+    });
+    if (error) toAirtableError(error);
+  } catch (err) {
+    if (err instanceof AirtableError) throw err;
+    toAirtableError(err);
   }
 }
 
 export function deriveErrorMessage(err: unknown): string {
-  if (err instanceof AirtableError) {
-    console.error('[deriveErrorMessage]', err.message);
-    if (err.message.includes('timeout'))    return 'Tiempo agotado. Verifica tu conexión e intenta de nuevo.';
-    if (err.message.includes('network'))    return 'Sin conexión. Verifica tu internet e intenta de nuevo.';
-    if (err.message.includes('violates'))   return 'Datos inválidos. Intenta de nuevo.';
-    if (err.message.includes('not found'))  return 'Tabla no encontrada. Verifica el esquema en Supabase.';
-    if (err.message.includes('permission')) return 'Sin permisos. Verifica las políticas RLS en Supabase.';
-    return `Error: ${err.message}`;
-  }
-  console.error('[deriveErrorMessage] unexpected:', err);
-  return 'Error inesperado. Intenta de nuevo.';
+  const msg = err instanceof Error ? err.message : String(err);
+  console.error('[deriveErrorMessage]', msg);
+  if (msg.includes('Invalid API key') || msg.includes('apikey') || msg.includes('JWT'))
+    return 'Error de configuración: API key inválida. Verifica las variables de entorno en Vercel.';
+  if (msg.includes('not set'))
+    return 'Error de configuración: variable de entorno faltante.';
+  if (msg.includes('timeout'))
+    return 'Tiempo agotado. Verifica tu conexión e intenta de nuevo.';
+  if (msg.includes('violates') || msg.includes('invalid input'))
+    return 'Datos inválidos. Intenta de nuevo.';
+  if (msg.includes('permission') || msg.includes('policy'))
+    return 'Sin permisos. Verifica las políticas RLS en Supabase.';
+  return `Error: ${msg}`;
 }
