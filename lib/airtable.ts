@@ -19,7 +19,10 @@ export async function submitFamiliaLead(data: {
     whatsapp: data.whatsapp,
     urgencia: data.urgencia,
   });
-  if (error) throw new AirtableError(0, error.message);
+  if (error) {
+    console.error('[Supabase] leads_familias insert error:', error);
+    throw new AirtableError(0, error.message);
+  }
 }
 
 export async function submitCuidadoraLead(data: {
@@ -36,15 +39,22 @@ export async function submitCuidadoraLead(data: {
     plan:          data.plan,
     certificacion: data.certificacion?.trim() || null,
   });
-  if (error) throw new AirtableError(0, error.message);
+  if (error) {
+    console.error('[Supabase] leads_cuidadoras insert error:', error);
+    throw new AirtableError(0, error.message);
+  }
 }
 
 export function deriveErrorMessage(err: unknown): string {
   if (err instanceof AirtableError) {
-    if (err.message.includes('timeout'))  return 'Tiempo agotado. Verifica tu conexión e intenta de nuevo.';
-    if (err.message.includes('network'))  return 'Sin conexión. Verifica tu internet e intenta de nuevo.';
-    if (err.message.includes('violates')) return 'Datos inválidos. Intenta de nuevo.';
-    return 'Error temporal. Intenta de nuevo en un momento.';
+    console.error('[deriveErrorMessage]', err.message);
+    if (err.message.includes('timeout'))    return 'Tiempo agotado. Verifica tu conexión e intenta de nuevo.';
+    if (err.message.includes('network'))    return 'Sin conexión. Verifica tu internet e intenta de nuevo.';
+    if (err.message.includes('violates'))   return 'Datos inválidos. Intenta de nuevo.';
+    if (err.message.includes('not found'))  return 'Tabla no encontrada. Verifica el esquema en Supabase.';
+    if (err.message.includes('permission')) return 'Sin permisos. Verifica las políticas RLS en Supabase.';
+    return `Error: ${err.message}`;
   }
+  console.error('[deriveErrorMessage] unexpected:', err);
   return 'Error inesperado. Intenta de nuevo.';
 }
