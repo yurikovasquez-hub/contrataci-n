@@ -7,12 +7,22 @@ export class AirtableError extends Error {
   }
 }
 
+function extractMessage(err: unknown): string {
+  if (!err) return 'unknown error';
+  if (typeof err === 'string') return err;
+  if (err instanceof Error) return err.message;
+  try {
+    const obj = err as Record<string, unknown>;
+    if (typeof obj.message === 'string') return obj.message;
+    return JSON.stringify(err);
+  } catch {
+    return 'unknown error';
+  }
+}
+
 function toAirtableError(err: unknown): never {
-  let msg = 'unknown';
-  if (err instanceof Error) msg = err.message;
-  else if (err && typeof err === 'object' && 'message' in err) msg = String((err as { message: unknown }).message);
-  else msg = String(err);
-  console.error('[Supabase error]', err);
+  const msg = extractMessage(err);
+  console.error('[Supabase error]', JSON.stringify(err));
   throw new AirtableError(0, msg);
 }
 
@@ -59,17 +69,17 @@ export async function submitCuidadoraLead(data: {
 }
 
 export function deriveErrorMessage(err: unknown): string {
-  const msg = err instanceof Error ? err.message : String(err);
+  const msg = extractMessage(err);
   console.error('[deriveErrorMessage]', msg);
   if (msg.includes('Invalid API key') || msg.includes('apikey') || msg.includes('JWT'))
-    return 'Error de configuración: API key inválida. Verifica las variables de entorno en Vercel.';
-  if (msg.includes('not set'))
+    return 'Error de configuración: API key inválida.';
+  if (msg.includes('not set') || msg.includes('supabaseUrl') || msg.includes('supabaseKey'))
     return 'Error de configuración: variable de entorno faltante.';
-  if (msg.includes('timeout'))
-    return 'Tiempo agotado. Verifica tu conexión e intenta de nuevo.';
   if (msg.includes('violates') || msg.includes('invalid input'))
     return 'Datos inválidos. Intenta de nuevo.';
-  if (msg.includes('permission') || msg.includes('policy'))
+  if (msg.includes('permission') || msg.includes('policy') || msg.includes('RLS'))
     return 'Sin permisos. Verifica las políticas RLS en Supabase.';
+  if (msg.includes('timeout') || msg.includes('network'))
+    return 'Sin conexión. Verifica tu internet e intenta de nuevo.';
   return `Error: ${msg}`;
 }
