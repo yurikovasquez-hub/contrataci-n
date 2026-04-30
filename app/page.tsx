@@ -29,7 +29,7 @@ export default function Home() {
             alt="NanaGo"
             width={180}
             height={180}
-            className="mx-auto drop-shadow-lg"
+            className="mx-auto drop-shadow-lg rounded-full"
             priority
           />
           <p className="mt-3 text-lg text-white/90 font-medium drop-shadow">
