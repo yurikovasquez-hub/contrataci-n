@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { HeroSlideshow } from '@/components/shared/HeroSlideshow';
 
 const SLIDES = [
-  { url: 'https://images.unsplash.com/photo-1587467512961-120760940315?w=1600&q=80', alt: 'Cuidadora profesional con niño pequeño' },
+  { url: 'https://images.unsplash.com/photo-1574706472790-f24ebe0510ba?w=1600&q=80', alt: 'Nana cargando a un bebé en brazos' },
   { url: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1600&q=80', alt: 'Nana jugando con un bebé' },
   { url: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1600&q=80', alt: 'Niño caminando en el parque' },
 ];
@@ -19,7 +19,7 @@ export function HeroCuidadoras() {
       </div>
       <HeroSlideshow slides={SLIDES}>
         <div className="mx-auto max-w-2xl">
-          <Image src="/logo-nanago.png" alt="NanaGo" width={120} height={120} className="mx-auto mb-4" priority />
+          <Image src="/logo-nanago.png" alt="NanaGo" width={120} height={120} className="mx-auto mb-4 rounded-full" priority />
           <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1 text-sm font-medium text-white">
             Para técnicas en enfermería y cuidado infantil
           </span>

@@ -19,7 +19,7 @@ export function HeroFamilias() {
       </div>
       <HeroSlideshow slides={SLIDES}>
         <div className="mx-auto max-w-2xl">
-          <Image src="/logo-nanago.png" alt="NanaGo" width={120} height={120} className="mx-auto mb-4" priority />
+          <Image src="/logo-nanago.png" alt="NanaGo" width={120} height={120} className="mx-auto mb-4 rounded-full" priority />
           <span className="mb-4 inline-block rounded-full bg-white/20 px-4 py-1 text-sm font-medium text-white">
             Cuidado infantil verificado en Lima
           </span>
